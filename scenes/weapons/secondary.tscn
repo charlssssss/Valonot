@@ -1,0 +1,72 @@
+[gd_scene load_steps=10 format=3 uid="uid://c8ff2amflb2bw"]
+
+[ext_resource type="Texture2D" uid="uid://cusraub58gd3i" path="res://assets/sprite-sheets/weapon/classic-pistol-spritesheet.png" id="1_8tfra"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bb4yk"]
+atlas = ExtResource("1_8tfra")
+region = Rect2(102, 19, 51, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nk7ko"]
+atlas = ExtResource("1_8tfra")
+region = Rect2(0, 0, 51, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1oyus"]
+atlas = ExtResource("1_8tfra")
+region = Rect2(51, 0, 51, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jy6wb"]
+atlas = ExtResource("1_8tfra")
+region = Rect2(102, 0, 51, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r3y2l"]
+atlas = ExtResource("1_8tfra")
+region = Rect2(0, 19, 51, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bw0us"]
+atlas = ExtResource("1_8tfra")
+region = Rect2(51, 19, 51, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ne0h"]
+atlas = ExtResource("1_8tfra")
+region = Rect2(102, 19, 51, 19)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ohu1i"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bb4yk")
+}],
+"loop": false,
+"name": &"secondary_default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nk7ko")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1oyus")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jy6wb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r3y2l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bw0us")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5ne0h")
+}],
+"loop": false,
+"name": &"secondary_fire",
+"speed": 24.0
+}]
+
+[node name="secondary" type="AnimatedSprite2D"]
+position = Vector2(1, 0)
+sprite_frames = SubResource("SpriteFrames_ohu1i")
+animation = &"secondary_default"
+
+[node name="fire_point" type="Marker2D" parent="."]

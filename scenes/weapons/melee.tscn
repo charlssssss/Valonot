@@ -1,0 +1,69 @@
+[gd_scene load_steps=10 format=3 uid="uid://batvx7mbwx6k"]
+
+[ext_resource type="Texture2D" uid="uid://lwsjtwlckc4g" path="res://assets/sprite-sheets/weapon/classic-knife-spritesheet.png" id="1_mhmvm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wtwnc"]
+atlas = ExtResource("1_mhmvm")
+region = Rect2(0, 0, 38, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7lvdf"]
+atlas = ExtResource("1_mhmvm")
+region = Rect2(0, 0, 38, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yb03i"]
+atlas = ExtResource("1_mhmvm")
+region = Rect2(38, 0, 38, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vix5x"]
+atlas = ExtResource("1_mhmvm")
+region = Rect2(76, 0, 38, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1dp2s"]
+atlas = ExtResource("1_mhmvm")
+region = Rect2(0, 15, 38, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8m7vo"]
+atlas = ExtResource("1_mhmvm")
+region = Rect2(38, 15, 38, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gmtsw"]
+atlas = ExtResource("1_mhmvm")
+region = Rect2(76, 15, 38, 15)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2ic5f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wtwnc")
+}],
+"loop": false,
+"name": &"melee_default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7lvdf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yb03i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vix5x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1dp2s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8m7vo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gmtsw")
+}],
+"loop": false,
+"name": &"melee_fire",
+"speed": 24.0
+}]
+
+[node name="melee" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_2ic5f")
+animation = &"melee_default"

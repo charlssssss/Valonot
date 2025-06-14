@@ -1,0 +1,71 @@
+[gd_scene load_steps=10 format=3 uid="uid://c3apnxwaf2ey2"]
+
+[ext_resource type="Texture2D" uid="uid://bxwtb00jfsfv4" path="res://assets/sprite-sheets/weapon/pistol-recoil-animation.png" id="1_v5ru1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_poely"]
+atlas = ExtResource("1_v5ru1")
+region = Rect2(0, 0, 29, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ki514"]
+atlas = ExtResource("1_v5ru1")
+region = Rect2(0, 0, 29, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uvsva"]
+atlas = ExtResource("1_v5ru1")
+region = Rect2(29, 0, 29, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ygtq"]
+atlas = ExtResource("1_v5ru1")
+region = Rect2(58, 0, 29, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mr7hu"]
+atlas = ExtResource("1_v5ru1")
+region = Rect2(0, 27, 29, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_slrkg"]
+atlas = ExtResource("1_v5ru1")
+region = Rect2(29, 27, 29, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1eycg"]
+atlas = ExtResource("1_v5ru1")
+region = Rect2(58, 27, 29, 27)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_p67ts"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_poely")
+}],
+"loop": false,
+"name": &"primary_default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ki514")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uvsva")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ygtq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mr7hu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_slrkg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1eycg")
+}],
+"loop": false,
+"name": &"primary_fire",
+"speed": 24.0
+}]
+
+[node name="primary" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_p67ts")
+animation = &"primary_default"
+
+[node name="fire_point" type="Marker2D" parent="."]
