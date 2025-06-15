@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://c8ff2amflb2bw"]
+[gd_scene load_steps=11 format=3 uid="uid://c8ff2amflb2bw"]
 
 [ext_resource type="Texture2D" uid="uid://cusraub58gd3i" path="res://assets/sprite-sheets/weapon/classic-pistol-spritesheet.png" id="1_8tfra"]
 
@@ -6,31 +6,31 @@
 atlas = ExtResource("1_8tfra")
 region = Rect2(102, 19, 51, 19)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_nk7ko"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_moj6v"]
 atlas = ExtResource("1_8tfra")
 region = Rect2(0, 0, 51, 19)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_1oyus"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_8wc86"]
 atlas = ExtResource("1_8tfra")
 region = Rect2(51, 0, 51, 19)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jy6wb"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_60bog"]
 atlas = ExtResource("1_8tfra")
 region = Rect2(102, 0, 51, 19)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_r3y2l"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_oerik"]
 atlas = ExtResource("1_8tfra")
 region = Rect2(0, 19, 51, 19)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_bw0us"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_gxios"]
 atlas = ExtResource("1_8tfra")
 region = Rect2(51, 19, 51, 19)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_5ne0h"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_qe5fi"]
 atlas = ExtResource("1_8tfra")
 region = Rect2(102, 19, 51, 19)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_ohu1i"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_2p584"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -38,35 +38,45 @@ animations = [{
 }],
 "loop": false,
 "name": &"secondary_default",
-"speed": 5.0
+"speed": 1.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_nk7ko")
+"texture": SubResource("AtlasTexture_moj6v")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_1oyus")
+"texture": SubResource("AtlasTexture_8wc86")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_jy6wb")
+"texture": SubResource("AtlasTexture_60bog")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_r3y2l")
+"texture": SubResource("AtlasTexture_oerik")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_bw0us")
+"texture": SubResource("AtlasTexture_gxios")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_5ne0h")
+"texture": SubResource("AtlasTexture_qe5fi")
 }],
 "loop": false,
 "name": &"secondary_fire",
 "speed": 24.0
 }]
 
-[node name="secondary" type="AnimatedSprite2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ooiio"]
+size = Vector2(19, 12.5)
+
+[node name="secondary" type="Area2D"]
 position = Vector2(1, 0)
-sprite_frames = SubResource("SpriteFrames_ohu1i")
+collision_layer = 8
+
+[node name="animated_sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_2p584")
 animation = &"secondary_default"
 
-[node name="fire_point" type="Marker2D" parent="."]
+[node name="fire_point" type="Marker2D" parent="animated_sprite"]
+
+[node name="collision_shape" type="CollisionShape2D" parent="."]
+position = Vector2(-9.5, -0.25)
+shape = SubResource("RectangleShape2D_ooiio")

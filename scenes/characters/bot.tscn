@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://c3uxi2otj1bmh"]
+[gd_scene load_steps=9 format=3 uid="uid://c3uxi2otj1bmh"]
 
 [ext_resource type="Texture2D" uid="uid://bqyvt6o8ytq3c" path="res://assets/sprite-sheets/agent/jett-idle.png" id="1_6kjts"]
 [ext_resource type="Script" path="res://scripts/bot.gd" id="1_lpid7"]
+[ext_resource type="PackedScene" uid="uid://epcntget2aml" path="res://scenes/hud/health_bar.tscn" id="3_k0g3p"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7m8a5"]
 atlas = ExtResource("1_6kjts")
@@ -33,11 +34,14 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yces8"]
+radius = 7.35227
+height = 27.6463
 
-[node name="bot" type="CharacterBody2D"]
+[node name="bot" type="CharacterBody2D" node_paths=PackedStringArray("health_bar")]
 collision_layer = 4
 collision_mask = 6
 script = ExtResource("1_lpid7")
+health_bar = NodePath("health_bar")
 
 [node name="animated_sprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -16)
@@ -45,5 +49,13 @@ sprite_frames = SubResource("SpriteFrames_uympw")
 autoplay = "default"
 
 [node name="collision_shape" type="CollisionShape2D" parent="."]
-position = Vector2(0, -15)
+position = Vector2(-0.10511, -13.7387)
 shape = SubResource("CapsuleShape2D_yces8")
+
+[node name="health_bar" parent="." instance=ExtResource("3_k0g3p")]
+offset_left = -6.431
+offset_top = -32.9816
+offset_right = 248.569
+offset_bottom = -5.9816
+scale = Vector2(0.0511198, 0.0582721)
+metadata/_edit_use_anchors_ = true

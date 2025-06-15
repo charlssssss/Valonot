@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 window/size/viewport_width=480
 window/size/viewport_height=270
+window/size/mode=2
 window/stretch/mode="viewport"
 
 [input]
@@ -68,8 +69,10 @@ fire={
 
 2d_render/layer_2="Layer 2"
 2d_render/layer_3="Layer 3"
+2d_physics/layer_1="Environment"
 2d_physics/layer_2="Agent"
 2d_physics/layer_3="Bot"
+2d_physics/layer_4="Prop"
 
 [rendering]
 

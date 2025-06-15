@@ -1,10 +1,14 @@
 extends WeaponBaseState
 
+var enemy: CharacterBody2D
+
 func enter() -> void:
 	fire_bullet()
 
 func process_input(_event: InputEvent) -> void:
-	if Input.is_action_just_pressed("fire"):
+	if  current_weapon == "melee" and Input.is_action_just_pressed("fire"):
+		attack_melee()
+	if  Input.is_action_just_pressed("fire"):
 		fire_bullet()
 	elif Input.is_action_just_pressed("change_to_primary"):
 		transitioned.emit(self, "primary")
@@ -20,7 +24,6 @@ func play_weapon_animation() -> void:
 	
 func fire_bullet() -> void:
 	play_weapon_animation()
-	
 	var fire_point = animation.get_child(0) if animation.get_child_count() > 0 else null
 	if fire_point == null:
 		return
@@ -33,3 +36,13 @@ func fire_bullet() -> void:
 	new_bullet.global_position = fire_point.global_position
 	new_bullet.global_rotation = fire_point.global_rotation
 	fire_point.add_child(new_bullet)
+
+func attack_melee() -> void:
+	if enemy != null and enemy.has_method("take_damage"):
+		enemy.take_damage(20)
+
+func _on_melee_body_entered(body: CharacterBody2D):
+	enemy = body
+
+func _on_melee_body_exited(_body: CharacterBody2D):
+	enemy = null

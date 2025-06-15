@@ -2,71 +2,77 @@
 
 [ext_resource type="Texture2D" uid="uid://ch1x450iwc0bk" path="res://assets/sprite-sheets/weapon/classic-phantom-spritesheet.png" id="1_tfoku"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_joj5d"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_dvebq"]
 atlas = ExtResource("1_tfoku")
 region = Rect2(138, 21, 69, 21)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_db1y8"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_41ktp"]
 atlas = ExtResource("1_tfoku")
 region = Rect2(0, 0, 69, 21)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_kh5ri"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_fv1qy"]
 atlas = ExtResource("1_tfoku")
 region = Rect2(69, 0, 69, 21)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_mx1oh"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_p61wt"]
 atlas = ExtResource("1_tfoku")
 region = Rect2(138, 0, 69, 21)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_nxnom"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_saiiw"]
 atlas = ExtResource("1_tfoku")
 region = Rect2(0, 21, 69, 21)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_vebpy"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_y4f1u"]
 atlas = ExtResource("1_tfoku")
 region = Rect2(69, 21, 69, 21)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_x84l5"]
-atlas = ExtResource("1_tfoku")
-region = Rect2(138, 21, 69, 21)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_p67ts"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_nand2"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_joj5d")
+"texture": SubResource("AtlasTexture_dvebq")
 }],
 "loop": false,
 "name": &"primary_default",
-"speed": 5.0
+"speed": 1.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_db1y8")
+"texture": SubResource("AtlasTexture_41ktp")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_kh5ri")
+"texture": SubResource("AtlasTexture_fv1qy")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_mx1oh")
+"texture": SubResource("AtlasTexture_p61wt")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_nxnom")
+"texture": SubResource("AtlasTexture_saiiw")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_vebpy")
+"texture": SubResource("AtlasTexture_y4f1u")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_x84l5")
+"texture": SubResource("AtlasTexture_dvebq")
 }],
 "loop": false,
 "name": &"primary_fire",
 "speed": 24.0
 }]
 
-[node name="primary" type="AnimatedSprite2D"]
-sprite_frames = SubResource("SpriteFrames_p67ts")
-animation = &"primary_default"
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mxlc8"]
+size = Vector2(44.5, 18)
 
-[node name="fire_point" type="Marker2D" parent="."]
+[node name="primary" type="Area2D"]
+collision_layer = 8
+
+[node name="animated_sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_nand2")
+animation = &"primary_fire"
+
+[node name="fire_point" type="Marker2D" parent="animated_sprite"]
 position = Vector2(9, 0)
+
+[node name="collision_shape" type="CollisionShape2D" parent="."]
+position = Vector2(-12.75, 0)
+shape = SubResource("RectangleShape2D_mxlc8")

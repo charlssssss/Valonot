@@ -1,69 +1,80 @@
-[gd_scene load_steps=10 format=3 uid="uid://batvx7mbwx6k"]
+[gd_scene load_steps=11 format=3 uid="uid://batvx7mbwx6k"]
 
 [ext_resource type="Texture2D" uid="uid://lwsjtwlckc4g" path="res://assets/sprite-sheets/weapon/classic-knife-spritesheet.png" id="1_mhmvm"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_wtwnc"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_5pymy"]
 atlas = ExtResource("1_mhmvm")
 region = Rect2(0, 0, 38, 15)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_7lvdf"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_lbtmd"]
 atlas = ExtResource("1_mhmvm")
 region = Rect2(0, 0, 38, 15)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_yb03i"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_2mba8"]
 atlas = ExtResource("1_mhmvm")
 region = Rect2(38, 0, 38, 15)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_vix5x"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ut70"]
 atlas = ExtResource("1_mhmvm")
 region = Rect2(76, 0, 38, 15)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_1dp2s"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_8352q"]
 atlas = ExtResource("1_mhmvm")
 region = Rect2(0, 15, 38, 15)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_8m7vo"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_d40qs"]
 atlas = ExtResource("1_mhmvm")
 region = Rect2(38, 15, 38, 15)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_gmtsw"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_47vpn"]
 atlas = ExtResource("1_mhmvm")
 region = Rect2(76, 15, 38, 15)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_2ic5f"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_u340c"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_wtwnc")
+"texture": SubResource("AtlasTexture_5pymy")
 }],
 "loop": false,
 "name": &"melee_default",
-"speed": 5.0
+"speed": 1.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_7lvdf")
+"texture": SubResource("AtlasTexture_lbtmd")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_yb03i")
+"texture": SubResource("AtlasTexture_2mba8")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_vix5x")
+"texture": SubResource("AtlasTexture_4ut70")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_1dp2s")
+"texture": SubResource("AtlasTexture_8352q")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_8m7vo")
+"texture": SubResource("AtlasTexture_d40qs")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_gmtsw")
+"texture": SubResource("AtlasTexture_47vpn")
 }],
 "loop": false,
 "name": &"melee_fire",
 "speed": 24.0
 }]
 
-[node name="melee" type="AnimatedSprite2D"]
-sprite_frames = SubResource("SpriteFrames_2ic5f")
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_42xwo"]
+size = Vector2(25, 9)
+
+[node name="melee" type="Area2D"]
+collision_layer = 8
+collision_mask = 7
+
+[node name="animated_sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_u340c")
 animation = &"melee_default"
+
+[node name="collision_shape" type="CollisionShape2D" parent="."]
+position = Vector2(6.5, -0.5)
+shape = SubResource("RectangleShape2D_42xwo")

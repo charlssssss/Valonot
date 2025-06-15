@@ -4,14 +4,14 @@ class_name Weapon
 @export var weapon_pivot: Marker2D
 @export var weapon_state_machine: WeaponStateMachine
 
-var animations: Dictionary = {}
+var weapon_components: Dictionary = {}
 
 func _ready() -> void:
 	for child in weapon_pivot.get_children():
-		if child is AnimatedSprite2D:
-			animations[child.name.to_lower()] = child
+		if child is Area2D:
+			weapon_components[child.name.to_lower()] = child
 		
-	weapon_state_machine.init(self, animations)
+	weapon_state_machine.init(self, weapon_components)
 
 func _unhandled_input(event: InputEvent) -> void:
 	weapon_state_machine.process_input(event)

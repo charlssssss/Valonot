@@ -69,4 +69,6 @@ current_weapon = "primary"
 wait_time = 0.4
 one_shot = true
 
+[connection signal="body_entered" from="collision_shape/weapon_pivot/melee" to="weapon_state_machine/fire" method="_on_melee_body_entered"]
+[connection signal="body_exited" from="collision_shape/weapon_pivot/melee" to="weapon_state_machine/fire" method="_on_melee_body_exited"]
 [connection signal="timeout" from="weapon_state_machine/change_weapon_timer" to="weapon_state_machine" method="_on_change_weapon_timer_timeout"]

@@ -6,17 +6,17 @@ class_name  WeaponStateMachine
 
 var current_state: WeaponBaseState
 var states: Dictionary = {}
-var weapon_animations: Dictionary = {}
+var weapons: Dictionary = {}
 var is_done_weapon_change: bool = false
 
-func init(weapon: Area2D, animations: Dictionary) -> void:
-	weapon_animations = animations
+func init(weapon: Area2D, weapon_components: Dictionary) -> void:
+	weapons = weapon_components
 	for child in get_children():
 		if child is WeaponBaseState:
 			var child_name = child.name.to_lower()
 			states[child_name] = child
 			child.weapon = weapon
-			child.animation = animations.get(child_name)
+			child.weapons = weapons.get(child_name)
 			child.transitioned.connect(on_child_transition)
 		
 	if initial_state:
@@ -64,9 +64,9 @@ func hide_other_weapons(new_weapon: String) -> void:
 	if new_weapon == "fire":
 		return
 	
-	for weapon_name in weapon_animations.keys():
-		var sprite = weapon_animations[weapon_name]
-		sprite.visible = (weapon_name == new_weapon)
+	for weapon_name in weapons.keys():
+		var component = weapons[weapon_name]
+		component.visible = (weapon_name == new_weapon)
 	
 func get_move_speed_with_weapon() -> float:
 	if current_state:
