@@ -6,12 +6,13 @@ class_name  MoveStateMachine
 var current_state: MoveBaseState
 var states: Dictionary = {}
 
-func init(char_body: CharacterBody2D, animation: AnimatedSprite2D) -> void:
+func init(char_body: CharacterBody2D, animation: AnimatedSprite2D, weapon_state_machine: WeaponStateMachine) -> void:
 	for child in get_children():
 		if child is MoveBaseState:
 			states[child.name.to_lower()] = child
 			child.char_body = char_body
 			child.animation = animation
+			child.weapon_state_machine = weapon_state_machine
 			child.transitioned.connect(on_child_transition)
 		
 	if initial_state:

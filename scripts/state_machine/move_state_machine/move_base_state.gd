@@ -8,6 +8,7 @@ signal transitioned
 
 var char_body: CharacterBody2D
 var animation: AnimatedSprite2D
+var weapon_state_machine: WeaponStateMachine
 
 func enter() -> void:
 	animation.play(animation_name)

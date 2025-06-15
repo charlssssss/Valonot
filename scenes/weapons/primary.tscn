@@ -1,40 +1,40 @@
 [gd_scene load_steps=10 format=3 uid="uid://c3apnxwaf2ey2"]
 
-[ext_resource type="Texture2D" uid="uid://bxwtb00jfsfv4" path="res://assets/sprite-sheets/weapon/pistol-recoil-animation.png" id="1_v5ru1"]
+[ext_resource type="Texture2D" uid="uid://ch1x450iwc0bk" path="res://assets/sprite-sheets/weapon/classic-phantom-spritesheet.png" id="1_tfoku"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_poely"]
-atlas = ExtResource("1_v5ru1")
-region = Rect2(0, 0, 29, 27)
+[sub_resource type="AtlasTexture" id="AtlasTexture_joj5d"]
+atlas = ExtResource("1_tfoku")
+region = Rect2(138, 21, 69, 21)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ki514"]
-atlas = ExtResource("1_v5ru1")
-region = Rect2(0, 0, 29, 27)
+[sub_resource type="AtlasTexture" id="AtlasTexture_db1y8"]
+atlas = ExtResource("1_tfoku")
+region = Rect2(0, 0, 69, 21)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_uvsva"]
-atlas = ExtResource("1_v5ru1")
-region = Rect2(29, 0, 29, 27)
+[sub_resource type="AtlasTexture" id="AtlasTexture_kh5ri"]
+atlas = ExtResource("1_tfoku")
+region = Rect2(69, 0, 69, 21)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_7ygtq"]
-atlas = ExtResource("1_v5ru1")
-region = Rect2(58, 0, 29, 27)
+[sub_resource type="AtlasTexture" id="AtlasTexture_mx1oh"]
+atlas = ExtResource("1_tfoku")
+region = Rect2(138, 0, 69, 21)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_mr7hu"]
-atlas = ExtResource("1_v5ru1")
-region = Rect2(0, 27, 29, 27)
+[sub_resource type="AtlasTexture" id="AtlasTexture_nxnom"]
+atlas = ExtResource("1_tfoku")
+region = Rect2(0, 21, 69, 21)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_slrkg"]
-atlas = ExtResource("1_v5ru1")
-region = Rect2(29, 27, 29, 27)
+[sub_resource type="AtlasTexture" id="AtlasTexture_vebpy"]
+atlas = ExtResource("1_tfoku")
+region = Rect2(69, 21, 69, 21)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_1eycg"]
-atlas = ExtResource("1_v5ru1")
-region = Rect2(58, 27, 29, 27)
+[sub_resource type="AtlasTexture" id="AtlasTexture_x84l5"]
+atlas = ExtResource("1_tfoku")
+region = Rect2(138, 21, 69, 21)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_p67ts"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_poely")
+"texture": SubResource("AtlasTexture_joj5d")
 }],
 "loop": false,
 "name": &"primary_default",
@@ -42,22 +42,22 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ki514")
+"texture": SubResource("AtlasTexture_db1y8")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_uvsva")
+"texture": SubResource("AtlasTexture_kh5ri")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_7ygtq")
+"texture": SubResource("AtlasTexture_mx1oh")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_mr7hu")
+"texture": SubResource("AtlasTexture_nxnom")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_slrkg")
+"texture": SubResource("AtlasTexture_vebpy")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_1eycg")
+"texture": SubResource("AtlasTexture_x84l5")
 }],
 "loop": false,
 "name": &"primary_fire",
@@ -69,3 +69,4 @@ sprite_frames = SubResource("SpriteFrames_p67ts")
 animation = &"primary_default"
 
 [node name="fire_point" type="Marker2D" parent="."]
+position = Vector2(9, 0)

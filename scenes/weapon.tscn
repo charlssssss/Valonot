@@ -25,36 +25,40 @@ debug_color = Color(0.531568, 0.570356, 0.0231738, 0.42)
 [node name="weapon_pivot" type="Marker2D" parent="collision_shape"]
 
 [node name="primary" parent="collision_shape/weapon_pivot" instance=ExtResource("2_8kl7x")]
-visible = false
-position = Vector2(14, 0)
+position = Vector2(28, -1)
 
 [node name="secondary" parent="collision_shape/weapon_pivot" instance=ExtResource("2_u7u3p")]
-position = Vector2(28, 0)
+visible = false
+position = Vector2(28, -2)
 
 [node name="melee" parent="collision_shape/weapon_pivot" instance=ExtResource("3_q7j84")]
 visible = false
-position = Vector2(25, -1)
+position = Vector2(25, 2)
 
 [node name="weapon_state_machine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("1_vba3o")
-initial_state = NodePath("secondary")
+initial_state = NodePath("primary")
 
 [node name="primary" type="Node" parent="weapon_state_machine"]
 script = ExtResource("6_qvifu")
 animation_name = "primary_default"
 current_weapon = "primary"
+move_speed_with_weapon = 300.0
 
 [node name="secondary" type="Node" parent="weapon_state_machine"]
 script = ExtResource("7_g03s6")
 animation_name = "secondary_default"
 current_weapon = "secondary"
+move_speed_with_weapon = 350.0
 
 [node name="melee" type="Node" parent="weapon_state_machine"]
 script = ExtResource("8_r7j4c")
 animation_name = "melee_default"
 current_weapon = "melee"
+move_speed_with_weapon = 450.0
 
 [node name="fire" type="Node" parent="weapon_state_machine"]
 script = ExtResource("5_1ptm5")
-animation_name = "secondary_default"
-current_weapon = "secondary"
+animation_name = "primary_default"
+current_weapon = "primary"
+delay_duration = 0.4

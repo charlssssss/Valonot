@@ -37,6 +37,9 @@ func on_child_transition(state: WeaponBaseState, new_state_name: String):
 	if state != current_state: 
 		return
 	
+	if state.name == "fire" && state.current_weapon == new_state_name:
+		return
+	
 	var new_state: WeaponBaseState = states.get(new_state_name.to_lower())
 	if !new_state:
 		return
@@ -44,13 +47,13 @@ func on_child_transition(state: WeaponBaseState, new_state_name: String):
 	if current_state:
 		current_state.exit()
 	
-	
 	if new_state_name == "fire":
 		new_state.animation = state.animation
 		new_state.current_weapon = state.current_weapon
+		new_state.move_speed_with_weapon = state.move_speed_with_weapon
 	
-	new_state.enter()
 	hide_other_weapons(new_state_name)
+	new_state.enter()
 	current_state = new_state
 
 func hide_other_weapons(new_weapon: String) -> void:
@@ -61,3 +64,8 @@ func hide_other_weapons(new_weapon: String) -> void:
 		var sprite = weapon_animations[weapon_name]
 		sprite.visible = (weapon_name == new_weapon)
 	
+func get_move_speed_with_weapon() -> float:
+	if current_state:
+		return current_state.move_speed_with_weapon
+	
+	return 700

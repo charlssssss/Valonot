@@ -1,9 +1,8 @@
 extends WeaponBaseState
 
-func enter() -> void:
-	print("CHANGED TO PRIMARY!")
-
 func process_input(_event: InputEvent) -> void:
+	if !input_enabled:
+		return
 	if Input.is_action_just_pressed("fire"):
 		transitioned.emit(self, "fire")
 	elif Input.is_action_just_pressed("change_to_secondary"):
