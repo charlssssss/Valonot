@@ -2,10 +2,12 @@ extends Node
 class_name  WeaponStateMachine
 
 @export var initial_state: WeaponBaseState
+@export var change_weapon_timer: Timer
 
 var current_state: WeaponBaseState
 var states: Dictionary = {}
 var weapon_animations: Dictionary = {}
+var is_done_weapon_change: bool = false
 
 func init(weapon: Area2D, animations: Dictionary) -> void:
 	weapon_animations = animations
@@ -20,6 +22,7 @@ func init(weapon: Area2D, animations: Dictionary) -> void:
 	if initial_state:
 		initial_state.enter()
 		current_state = initial_state
+		start_change_weapon_timer()
 
 func process_input(event: InputEvent) -> void:
 	if current_state:
@@ -34,10 +37,10 @@ func process_physics(delta: float) -> void:
 		current_state.process_physics(delta)
 
 func on_child_transition(state: WeaponBaseState, new_state_name: String):
-	if state != current_state: 
+	if state != current_state:
 		return
 	
-	if state.name == "fire" && state.current_weapon == new_state_name:
+	if new_state_name == "fire" && !is_done_weapon_change:
 		return
 	
 	var new_state: WeaponBaseState = states.get(new_state_name.to_lower())
@@ -55,6 +58,7 @@ func on_child_transition(state: WeaponBaseState, new_state_name: String):
 	hide_other_weapons(new_state_name)
 	new_state.enter()
 	current_state = new_state
+	start_change_weapon_timer()
 
 func hide_other_weapons(new_weapon: String) -> void:
 	if new_weapon == "fire":
@@ -68,4 +72,12 @@ func get_move_speed_with_weapon() -> float:
 	if current_state:
 		return current_state.move_speed_with_weapon
 	
-	return 700
+	return 0
+
+func start_change_weapon_timer():
+	change_weapon_timer.stop()
+	is_done_weapon_change = false
+	change_weapon_timer.start()
+
+func _on_change_weapon_timer_timeout():
+	is_done_weapon_change = true

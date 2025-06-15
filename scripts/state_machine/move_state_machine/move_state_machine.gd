@@ -43,5 +43,4 @@ func on_child_transition(state: MoveBaseState, new_state_name: String):
 		current_state.exit()
 	
 	new_state.enter()
-	
 	current_state = new_state

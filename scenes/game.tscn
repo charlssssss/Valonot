@@ -1,8 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://1f10rorvx6um"]
+[gd_scene load_steps=3 format=3 uid="uid://1f10rorvx6um"]
 
 [ext_resource type="PackedScene" uid="uid://n80tshi15xey" path="res://scenes/characters/agents/jett.tscn" id="1_8otme"]
+[ext_resource type="PackedScene" uid="uid://c3uxi2otj1bmh" path="res://scenes/characters/bot.tscn" id="2_oaiqq"]
 
 [node name="Game" type="Node2D"]
 
 [node name="jett" parent="." instance=ExtResource("1_8otme")]
 position = Vector2(250, 142)
+
+[node name="bot" parent="." instance=ExtResource("2_oaiqq")]
+position = Vector2(314, 143)

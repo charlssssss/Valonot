@@ -7,8 +7,10 @@ func process_physics(_delta: float) -> void:
 		transitioned.emit(self, "idle")
 	
 	var current_speed = move_speed
-	if weapon_state_machine:
-		current_speed = weapon_state_machine.get_move_speed_with_weapon()
+	
+	var move_speed_with_weapon = weapon_state_machine.get_move_speed_with_weapon() if weapon_state_machine else 0.0
+	if move_speed_with_weapon > 0.0:
+		current_speed = move_speed_with_weapon
 	
 	direction = direction.normalized()
 	char_body.velocity = direction * current_speed

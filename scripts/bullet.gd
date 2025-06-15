@@ -1,0 +1,21 @@
+extends Area2D
+
+var travelled_distance: float = 0
+var damage: int = 10
+var speed: int = 500
+var bullet_range: int = 400
+
+func _physics_process(delta: float) -> void:
+	var direction = Vector2.RIGHT.rotated(rotation)
+	var distance = speed * delta
+	
+	position += direction * distance
+	travelled_distance += distance
+	
+	if travelled_distance > bullet_range:
+		queue_free()
+
+func _on_body_entered(body: CharacterBody2D):
+	queue_free()
+	if body.has_method("take_damage"):
+		body.take_damage(damage)

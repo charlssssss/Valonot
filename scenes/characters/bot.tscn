@@ -1,0 +1,49 @@
+[gd_scene load_steps=8 format=3 uid="uid://c3uxi2otj1bmh"]
+
+[ext_resource type="Texture2D" uid="uid://bqyvt6o8ytq3c" path="res://assets/sprite-sheets/agent/jett-idle.png" id="1_6kjts"]
+[ext_resource type="Script" path="res://scripts/bot.gd" id="1_lpid7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7m8a5"]
+atlas = ExtResource("1_6kjts")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ft72"]
+atlas = ExtResource("1_6kjts")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ehouy"]
+atlas = ExtResource("1_6kjts")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uympw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7m8a5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ft72")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ehouy")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yces8"]
+
+[node name="bot" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 6
+script = ExtResource("1_lpid7")
+
+[node name="animated_sprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -16)
+sprite_frames = SubResource("SpriteFrames_uympw")
+autoplay = "default"
+
+[node name="collision_shape" type="CollisionShape2D" parent="."]
+position = Vector2(0, -15)
+shape = SubResource("CapsuleShape2D_yces8")

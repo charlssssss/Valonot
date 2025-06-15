@@ -35,30 +35,38 @@ position = Vector2(28, -2)
 visible = false
 position = Vector2(25, 2)
 
-[node name="weapon_state_machine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+[node name="weapon_state_machine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "change_weapon_timer")]
 script = ExtResource("1_vba3o")
 initial_state = NodePath("primary")
+change_weapon_timer = NodePath("change_weapon_timer")
 
 [node name="primary" type="Node" parent="weapon_state_machine"]
 script = ExtResource("6_qvifu")
 animation_name = "primary_default"
 current_weapon = "primary"
-move_speed_with_weapon = 300.0
+delay_duration = 0.3
 
 [node name="secondary" type="Node" parent="weapon_state_machine"]
 script = ExtResource("7_g03s6")
 animation_name = "secondary_default"
 current_weapon = "secondary"
-move_speed_with_weapon = 350.0
+delay_duration = 0.3
+move_speed_with_weapon = 150.0
 
 [node name="melee" type="Node" parent="weapon_state_machine"]
 script = ExtResource("8_r7j4c")
 animation_name = "melee_default"
 current_weapon = "melee"
-move_speed_with_weapon = 450.0
+delay_duration = 0.3
+move_speed_with_weapon = 170.0
 
 [node name="fire" type="Node" parent="weapon_state_machine"]
 script = ExtResource("5_1ptm5")
 animation_name = "primary_default"
 current_weapon = "primary"
-delay_duration = 0.4
+
+[node name="change_weapon_timer" type="Timer" parent="weapon_state_machine"]
+wait_time = 0.4
+one_shot = true
+
+[connection signal="timeout" from="weapon_state_machine/change_weapon_timer" to="weapon_state_machine" method="_on_change_weapon_timer_timeout"]
