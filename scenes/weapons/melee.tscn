@@ -64,8 +64,9 @@ animations = [{
 "speed": 24.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_42xwo"]
-size = Vector2(25, 9)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2kc68"]
+radius = 8.0
+height = 32.0
 
 [node name="melee" type="Area2D"]
 collision_layer = 8
@@ -76,5 +77,6 @@ sprite_frames = SubResource("SpriteFrames_u340c")
 animation = &"melee_default"
 
 [node name="collision_shape" type="CollisionShape2D" parent="."]
-position = Vector2(6.5, -0.5)
-shape = SubResource("RectangleShape2D_42xwo")
+position = Vector2(-4, 0)
+rotation = -1.57079
+shape = SubResource("CapsuleShape2D_2kc68")

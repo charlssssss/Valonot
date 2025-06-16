@@ -9,16 +9,16 @@
 position = Vector2(250, 142)
 
 [node name="bot" parent="." instance=ExtResource("2_oaiqq")]
-position = Vector2(337, 116)
+position = Vector2(388, 112)
 
 [node name="bot2" parent="." instance=ExtResource("2_oaiqq")]
-position = Vector2(93, 84)
+position = Vector2(98, 98)
 
 [node name="bot3" parent="." instance=ExtResource("2_oaiqq")]
-position = Vector2(191, 39)
+position = Vector2(248, 21)
 
 [node name="bot4" parent="." instance=ExtResource("2_oaiqq")]
-position = Vector2(89, 209)
+position = Vector2(170, 255)
 
 [node name="bot5" parent="." instance=ExtResource("2_oaiqq")]
-position = Vector2(290, 212)
+position = Vector2(327, 266)
