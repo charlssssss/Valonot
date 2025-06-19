@@ -1,14 +1,14 @@
 [gd_scene load_steps=11 format=3 uid="uid://drll52iw5cr12"]
 
-[ext_resource type="Script" path="res://scripts/weapon.gd" id="1_0ur5o"]
-[ext_resource type="Script" path="res://scripts/state_machine/weapon_state_machine/weapon_state_machine.gd" id="1_vba3o"]
+[ext_resource type="Script" uid="uid://cwy361bnha4m" path="res://scripts/weapons/weapon.gd" id="1_0ur5o"]
+[ext_resource type="Script" uid="uid://c1d62gr3a7fba" path="res://scripts/state_machine/weapon_state_machine/weapon_state_machine.gd" id="1_vba3o"]
 [ext_resource type="PackedScene" uid="uid://c3apnxwaf2ey2" path="res://scenes/weapons/primary.tscn" id="2_8kl7x"]
 [ext_resource type="PackedScene" uid="uid://c8ff2amflb2bw" path="res://scenes/weapons/secondary.tscn" id="2_u7u3p"]
 [ext_resource type="PackedScene" uid="uid://batvx7mbwx6k" path="res://scenes/weapons/melee.tscn" id="3_q7j84"]
-[ext_resource type="Script" path="res://scripts/state_machine/weapon_state_machine/states/fire.gd" id="5_1ptm5"]
-[ext_resource type="Script" path="res://scripts/state_machine/weapon_state_machine/states/primary.gd" id="6_qvifu"]
-[ext_resource type="Script" path="res://scripts/state_machine/weapon_state_machine/states/secondary.gd" id="7_g03s6"]
-[ext_resource type="Script" path="res://scripts/state_machine/weapon_state_machine/states/melee.gd" id="8_r7j4c"]
+[ext_resource type="Script" uid="uid://loe7yuyff15r" path="res://scripts/state_machine/weapon_state_machine/states/fire.gd" id="5_1ptm5"]
+[ext_resource type="Script" uid="uid://d0s5weg6uqf7b" path="res://scripts/state_machine/weapon_state_machine/states/primary.gd" id="6_qvifu"]
+[ext_resource type="Script" uid="uid://cilcyxs8284gv" path="res://scripts/state_machine/weapon_state_machine/states/secondary.gd" id="7_g03s6"]
+[ext_resource type="Script" uid="uid://du0wquqt6iaeh" path="res://scripts/state_machine/weapon_state_machine/states/melee.gd" id="8_r7j4c"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mgdj1"]
 radius = 28.0
@@ -19,17 +19,18 @@ weapon_pivot = NodePath("collision_shape/weapon_pivot")
 weapon_state_machine = NodePath("weapon_state_machine")
 
 [node name="collision_shape" type="CollisionShape2D" parent="."]
+rotation = -0.00176865
 shape = SubResource("CircleShape2D_mgdj1")
 debug_color = Color(0.531568, 0.570356, 0.0231738, 0.42)
 
 [node name="weapon_pivot" type="Marker2D" parent="collision_shape"]
 
 [node name="primary" parent="collision_shape/weapon_pivot" instance=ExtResource("2_8kl7x")]
+visible = false
 position = Vector2(28, -1)
 
 [node name="secondary" parent="collision_shape/weapon_pivot" instance=ExtResource("2_u7u3p")]
-visible = false
-position = Vector2(28, -2)
+position = Vector2(24.0017, -0.957551)
 
 [node name="melee" parent="collision_shape/weapon_pivot" instance=ExtResource("3_q7j84")]
 visible = false

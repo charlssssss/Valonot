@@ -1,12 +1,13 @@
-[gd_scene load_steps=19 format=3 uid="uid://n80tshi15xey"]
+[gd_scene load_steps=20 format=3 uid="uid://n80tshi15xey"]
 
-[ext_resource type="Script" path="res://scripts/agent.gd" id="1_y3lit"]
-[ext_resource type="Texture2D" uid="uid://bqyvt6o8ytq3c" path="res://assets/sprite-sheets/agent/jett-idle.png" id="2_4ji8f"]
-[ext_resource type="Texture2D" uid="uid://bc3nxwi06ohqp" path="res://assets/sprite-sheets/agent/jett-run.png" id="3_h3vr2"]
-[ext_resource type="Script" path="res://scripts/state_machine/move_state_machine/move_state_machine.gd" id="4_qrxqe"]
-[ext_resource type="Script" path="res://scripts/state_machine/move_state_machine/states/idle.gd" id="5_5k0dp"]
-[ext_resource type="Script" path="res://scripts/state_machine/move_state_machine/states/run.gd" id="6_cvd0s"]
+[ext_resource type="Script" uid="uid://c4jsqpdyuvomf" path="res://scripts/characters/agents/agent.gd" id="1_y3lit"]
+[ext_resource type="Texture2D" uid="uid://cc2hdp2665m7x" path="res://assets/sprite-sheets/agent/jett-idle.png" id="2_4ji8f"]
+[ext_resource type="Texture2D" uid="uid://dhojxjcsrhdl4" path="res://assets/sprite-sheets/agent/jett-run.png" id="3_h3vr2"]
+[ext_resource type="Script" uid="uid://bp26gvkigamnb" path="res://scripts/state_machine/move_state_machine/move_state_machine.gd" id="4_qrxqe"]
+[ext_resource type="Script" uid="uid://clyv4hh7ti7ld" path="res://scripts/state_machine/move_state_machine/states/idle.gd" id="5_5k0dp"]
+[ext_resource type="Script" uid="uid://c4okwb71epr3m" path="res://scripts/state_machine/move_state_machine/states/run.gd" id="6_cvd0s"]
 [ext_resource type="PackedScene" uid="uid://drll52iw5cr12" path="res://scenes/weapon.tscn" id="7_nfwot"]
+[ext_resource type="PackedScene" uid="uid://epcntget2aml" path="res://scenes/hud/health_bar.tscn" id="8_ovi07"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lmshr"]
 atlas = ExtResource("2_4ji8f")
@@ -88,13 +89,14 @@ animations = [{
 radius = 5.0
 height = 24.0
 
-[node name="jett" type="CharacterBody2D" node_paths=PackedStringArray("animation", "move_state_machine", "weapon_component")]
+[node name="jett" type="CharacterBody2D" node_paths=PackedStringArray("animation", "move_state_machine", "weapon_component", "health_bar")]
 collision_layer = 2
 collision_mask = 6
 script = ExtResource("1_y3lit")
 animation = NodePath("animated_sprite")
 move_state_machine = NodePath("move_state_machine")
 weapon_component = NodePath("weapon")
+health_bar = NodePath("health_bar")
 
 [node name="animated_sprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -16)
@@ -121,6 +123,13 @@ move_speed = 100.0
 
 [node name="weapon" parent="." instance=ExtResource("7_nfwot")]
 position = Vector2(0, -14)
+
+[node name="health_bar" parent="." instance=ExtResource("8_ovi07")]
+offset_left = -6.0
+offset_top = -32.0
+offset_right = 249.0
+offset_bottom = -5.0
+scale = Vector2(0.0491028, 0.06406)
 
 [node name="camera" type="Camera2D" parent="."]
 position = Vector2(0, -12)

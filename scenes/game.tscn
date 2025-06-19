@@ -1,24 +1,30 @@
-[gd_scene load_steps=3 format=3 uid="uid://1f10rorvx6um"]
+[gd_scene load_steps=4 format=3 uid="uid://1f10rorvx6um"]
 
 [ext_resource type="PackedScene" uid="uid://n80tshi15xey" path="res://scenes/characters/agents/jett.tscn" id="1_8otme"]
-[ext_resource type="PackedScene" uid="uid://c3uxi2otj1bmh" path="res://scenes/characters/bot.tscn" id="2_oaiqq"]
+[ext_resource type="Script" uid="uid://ccvi0kcsk5x50" path="res://scripts/game.gd" id="1_lnu2h"]
 
-[node name="Game" type="Node2D"]
+[sub_resource type="Curve2D" id="Curve2D_lbhrr"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -83, -138, 0, 0, 0, 0, 579, -140, 0, 0, 0, 0, 583, 373, 0, 0, 0, 0, -79, 385, 0, 0, 0, 0, -81, -135)
+}
+point_count = 5
+
+[node name="Game" type="Node2D" node_paths=PackedStringArray("mob_spawn_point")]
+script = ExtResource("1_lnu2h")
+mob_spawn_point = NodePath("bot_path/bot_path_follow")
 
 [node name="jett" parent="." instance=ExtResource("1_8otme")]
 position = Vector2(250, 142)
 
-[node name="bot" parent="." instance=ExtResource("2_oaiqq")]
-position = Vector2(388, 112)
+[node name="bot_path" type="Path2D" parent="."]
+curve = SubResource("Curve2D_lbhrr")
 
-[node name="bot2" parent="." instance=ExtResource("2_oaiqq")]
-position = Vector2(98, 98)
+[node name="bot_path_follow" type="PathFollow2D" parent="bot_path"]
+position = Vector2(-83, -138)
+rotation = -0.00302114
 
-[node name="bot3" parent="." instance=ExtResource("2_oaiqq")]
-position = Vector2(248, 21)
+[node name="bot_spawn_interval" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
 
-[node name="bot4" parent="." instance=ExtResource("2_oaiqq")]
-position = Vector2(170, 255)
-
-[node name="bot5" parent="." instance=ExtResource("2_oaiqq")]
-position = Vector2(327, 266)
+[connection signal="timeout" from="bot_spawn_interval" to="." method="_on_bot_spawn_interval_timeout"]

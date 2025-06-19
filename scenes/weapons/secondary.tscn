@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://c8ff2amflb2bw"]
 
-[ext_resource type="Texture2D" uid="uid://cusraub58gd3i" path="res://assets/sprite-sheets/weapon/classic-pistol-spritesheet.png" id="1_8tfra"]
+[ext_resource type="Texture2D" uid="uid://m8gpcaeqjpoe" path="res://assets/sprite-sheets/weapon/classic-pistol-spritesheet.png" id="1_8tfra"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bb4yk"]
 atlas = ExtResource("1_8tfra")

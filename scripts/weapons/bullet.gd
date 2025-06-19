@@ -2,7 +2,7 @@ extends Area2D
 
 var travelled_distance: float = 0
 var damage: int = 10
-var speed: int = 500
+var speed: int = 250
 var bullet_range: int = 400
 
 func _physics_process(delta: float) -> void:
@@ -15,7 +15,7 @@ func _physics_process(delta: float) -> void:
 	if travelled_distance > bullet_range:
 		queue_free()
 
-func _on_body_entered(body: CharacterBody2D):
+func _on_body_entered(body: CharacterBody2D) -> void:
 	queue_free()
 	if body.has_method("take_damage"):
 		body.take_damage(damage)

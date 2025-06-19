@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://batvx7mbwx6k"]
 
-[ext_resource type="Texture2D" uid="uid://lwsjtwlckc4g" path="res://assets/sprite-sheets/weapon/classic-knife-spritesheet.png" id="1_mhmvm"]
+[ext_resource type="Texture2D" uid="uid://c4jerqcptr6rh" path="res://assets/sprite-sheets/weapon/classic-knife-spritesheet.png" id="1_mhmvm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5pymy"]
 atlas = ExtResource("1_mhmvm")
