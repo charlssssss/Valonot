@@ -22,7 +22,7 @@ func aim_enemy() -> bool:
 	
 	return true
 
-func shoot_bullet(has_enemy: bool) -> void:
+func shoot_bullet() -> void:
 	if !has_enemy:
 		return
 	
@@ -46,4 +46,4 @@ func _on_bot_attack_range_body_shape_exited(_body_rid: RID, body: Node2D, _body_
 	transitioned.emit(self, "follow", body)
 
 func _on_attack_interval_timeout() -> void:
-		shoot_bullet(has_enemy)
+		shoot_bullet()

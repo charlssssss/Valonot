@@ -26,10 +26,10 @@ debug_color = Color(0.531568, 0.570356, 0.0231738, 0.42)
 [node name="weapon_pivot" type="Marker2D" parent="collision_shape"]
 
 [node name="primary" parent="collision_shape/weapon_pivot" instance=ExtResource("2_8kl7x")]
-visible = false
 position = Vector2(28, -1)
 
 [node name="secondary" parent="collision_shape/weapon_pivot" instance=ExtResource("2_u7u3p")]
+visible = false
 position = Vector2(24.0017, -0.957551)
 
 [node name="melee" parent="collision_shape/weapon_pivot" instance=ExtResource("3_q7j84")]

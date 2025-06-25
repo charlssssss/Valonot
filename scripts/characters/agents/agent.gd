@@ -1,6 +1,8 @@
 extends CharacterBody2D
 class_name Agent
 
+signal game_over
+
 @export var animation: AnimatedSprite2D
 @export var move_state_machine: MoveStateMachine
 @export var weapon_component: Area2D
@@ -27,4 +29,4 @@ func take_damage(damage: int) -> void:
 		health -= damage
 		health_bar.health = health
 	else:
-		print("GAME OVER!")
+		game_over.emit()
